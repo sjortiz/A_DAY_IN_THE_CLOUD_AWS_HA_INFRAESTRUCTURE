@@ -7,18 +7,18 @@ api = Api(app)
 instance_metadata_url = (
     "http://169.254.169.254/latest/meta-data/local-hostname"
 )
-
+local_hostname = requests.get(instance_metadata_url)
 
 class HelloWorld(Resource):
 
     def get(self):
         return {
                 'hello': 'world',
-                'from': f'{requests.get(instance_metadata_url)}'
+                'from': '{}'.format(local_hostname)
             }
 
 
 api.add_resource(HelloWorld, '/')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=80, host="0.0.0.0")
