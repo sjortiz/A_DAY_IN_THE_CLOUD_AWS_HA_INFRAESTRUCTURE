@@ -5,16 +5,16 @@ from flask_restful import Resource, Api
 app = Flask(__name__)
 api = Api(app)
 instance_metadata_url = (
-    "http://169.254.169.254/latest/meta-data/local-hostname"
+    "http://169.254.169.254/latest/meta-data/instance-id"
 )
-local_hostname = requests.get(instance_metadata_url)
+instance_id = requests.get(instance_metadata_url).text
 
 class HelloWorld(Resource):
 
     def get(self):
         return {
                 'hello': 'world',
-                'from': '{}'.format(local_hostname)
+                'from': '{}'.format(instance_id)
             }
 
 

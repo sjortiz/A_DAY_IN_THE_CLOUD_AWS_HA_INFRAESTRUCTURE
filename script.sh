@@ -6,4 +6,4 @@ yum install -y git
 git clone https://github.com/sjortiz/a_day_in_the_cloud_aws_ha_infraestructure.git
 cd a_day_in_the_cloud_aws_ha_infraestructure
 pip install -r requirements.txt
-python api.py
+nohup python api.py &
