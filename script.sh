@@ -1,3 +1,4 @@
+#!/bin/bash
 yum update -y
 curl https://bootstrap.pypa.io/get-pip.py -o get-pip.sh
 chmod +x ./get-pip.sh
